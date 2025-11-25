@@ -4,316 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binoy S S | Brand Strategist & Graphic Designer</title>
-    <meta name="description"
-        content="Portfolio of Binoy S S, a creative Graphic Designer and UI Specialist based in Trivandrum, India.">
+    <title>Digital Updates | Binoy S S</title>
 
-    <!-- Fonts & Libraries -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="antialiased">
 
-    <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-
-    <!-- 3D Background -->
     <div id="canvas-container"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 px-6 py-5 border-b border-white/5 bg-black/80 backdrop-blur-md">
-        <div class="flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold tracking-tighter hover-trigger relative z-50">BINOY<span
-                    class="text-[#ccff00]"> S S.</span></a>
+    <!-- Nav -->
+    <nav
+        class="fixed w-full z-50 px-6 py-5 flex justify-between items-center border-b border-white/5 bg-black/80 backdrop-blur-md">
+        <a href="index.html" class="text-2xl font-bold tracking-tighter hover-trigger">BINOY<span
+                class="text-[#ccff00]"> S S.</span></a>
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-8 items-center text-sm font-medium">
-                <a href="#about" class="hover:text-[#ccff00] transition-colors hover-trigger">ABOUT</a>
-                <a href="#work" class="hover:text-[#ccff00] transition-colors hover-trigger">WORK</a>
-                <a href="blog.html" class="hover:text-[#ccff00] transition-colors hover-trigger">DIGITAL UPDATES</a>
-                <a href="#experience" class="hover:text-[#ccff00] transition-colors hover-trigger">EXPERIENCE</a>
-
-                <a href="assets/resume.pdf" download
-                    class="flex items-center gap-2 border border-gray-600 px-5 py-2 rounded-full hover:bg-white hover:text-black transition hover-trigger">
-                    <i class="fas fa-download"></i> <span>RESUME</span>
-                </a>
-            </div>
-
-            <a href="https://wa.link/+919400954703" target="_blank"
-                class="hidden md:block bg-[#ccff00] text-black px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-bold hover-trigger">
-                Let's Talk
-            </a>
-
-            <!-- Mobile Hamburger Button -->
-            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none relative z-50">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu"
-            class="fixed inset-0 bg-black flex flex-col justify-center items-center gap-8 text-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-40">
-            <a href="#about" class="mobile-link hover:text-[#ccff00]">ABOUT</a>
-            <a href="#work" class="mobile-link hover:text-[#ccff00]">WORK</a>
-            <a href="blog.html" class="mobile-link hover:text-[#ccff00]">DIGITAL UPDATES</a>
-            <a href="#experience" class="mobile-link hover:text-[#ccff00]">EXPERIENCE</a>
+        <div class="hidden md:flex gap-8 items-center text-sm font-medium">
+            <a href="index.html" class="mobile-link hover:text-[#ccff00]">ABOUT</a>
+            <a href="gallery.html" class="hover:text-[#ccff00] transition-colors hover-trigger">WORK</a>
+            <a href="blog.html" class="text-[#ccff00] transition-colors hover-trigger">DIGITAL UPDATES</a>
+            <a href="index.html#experience" class="hover:text-[#ccff00] transition-colors hover-trigger">EXPERIENCE</a>
             <a href="assets/resume.pdf" download
-                class="text-sm border border-[#ccff00] text-[#ccff00] px-6 py-2 rounded-full">DOWNLOAD RESUME</a>
-            <a href="https://wa.link/+919400954703" class="text-[#ccff00] text-lg mt-4">WhatsApp Me ↗</a>
+                class="flex items-center gap-2 border border-gray-600 px-4 py-1 rounded-full hover:bg-white hover:text-black transition hover-trigger">
+                RESUME
+            </a>
         </div>
+        <a href="https://wa.link/+919400954703" target="_blank"
+            class="hidden md:block bg-[#ccff00] text-black px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-bold hover-trigger">Let's
+            Talk</a>
     </nav>
 
     <div class="content-layer">
-
-        <!-- UPDATED HERO SECTION -->
-        <header class="min-h-screen flex items-center justify-center px-6 relative pt-24 md:pt-0">
-            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-                <!-- 1. Text Column (Order 2 on Mobile, Order 1 on Desktop) -->
-                <div class="order-2 md:order-1 relative z-10">
-                    <h1
-                        class="text-[14vw] md:text-[8vw] leading-[0.9] font-bold uppercase tracking-tighter hero-text mix-blend-difference">
-                        Visual <br>
-                        <span class="text-[#ccff00]">Alchemy</span>
-                    </h1>
-
-                    <p class="mt-8 text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-lg hero-subtext">
-                        Hi, I'm <span class="text-white font-bold">Binoy S S</span>. <br>
-                        A Brand Strategist & Designer crafting high-impact digital experiences in Kerala.
-                    </p>
-
-                    <div class="flex gap-6 mt-8 hero-subtext">
-                        <a href="https://www.linkedin.com/in/binoyss/" target="_blank"
-                            class="text-[#ccff00] border-b border-[#ccff00] pb-1 hover:text-white hover:border-white transition hover-trigger">LINKEDIN
-                            ↗</a>
-                        <a href="https://www.behance.net/binoypy" target="_blank"
-                            class="text-[#ccff00] border-b border-[#ccff00] pb-1 hover:text-white hover:border-white transition hover-trigger">BEHANCE
-                            ↗</a>
-                    </div>
-                </div>
-
-                <!-- 2. Image Column (Order 1 on Mobile, Order 2 on Desktop) -->
-                <div class="order-1 md:order-2 flex justify-center md:justify-end relative">
-                    <!-- Image Wrapper -->
-                    <div class="hero-image-wrapper relative group hover-trigger">
-                        <!-- Neon Glow Effect behind image -->
-                        <div
-                            class="absolute inset-0 bg-[#ccff00] rounded-full blur-[50px] opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-                        </div>
-
-                        <!-- The Image Frame -->
-                        <div
-                            class="relative w-[280px] h-[350px] md:w-[400px] md:h-[500px] rounded-[2rem] overflow-hidden border border-white/10 group-hover:border-[#ccff00]/50 transition-all duration-500">
-                            <!-- PLACEHOLDER IMAGE - REPLACE 'src' WITH YOUR PHOTO -->
-                            <!-- Example: src="assets/profile.jpg" -->
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
-                                alt="Binoy S S"
-                                class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105">
-                        </div>
-
-                        <!-- Decorative Elements -->
-                        <div
-                            class="absolute -bottom-6 -right-6 w-24 h-24 border border-[#ccff00] rounded-full flex items-center justify-center animate-spin-slow">
-                            <i class="fas fa-star text-[#ccff00]"></i>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <header class="pt-40 pb-20 px-6 text-center">
+            <h1 class="text-6xl md:text-8xl font-bold uppercase tracking-tighter hero-text">
+                DIGITAL <br> <span class="text-stroke">WORLD</span>
+            </h1>
+            <p class="mt-6 text-gray-400 max-w-2xl mx-auto">
+                Thoughts on Design Technology, AI Integration, and Market Trends.
+            </p>
         </header>
 
-        <!-- About / Profile Summary -->
-        <section id="about" class="py-20 px-6 bg-[#0a0a0a]">
-            <div class="container mx-auto">
-                <h2 class="text-[#ccff00] font-mono mb-6">/ PROFILE OVERVIEW</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <p class="text-xl md:text-2xl font-light text-gray-300 leading-normal">
-                        I demonstrate a proven ability to translate business goals into high-impact visual designs. My
-                        expertise spans <span class="text-white">Adobe Creative Suite, Figma, and Shopify
-                            development</span>, with a strong foundation in UI/UX design and wireframing.
+        <section class="py-12 px-6">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Post 1 -->
+                <article class="bento-card rounded-2xl p-4 hover-trigger group">
+                    <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-800 relative">
+                        <!-- Placeholder Image -->
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-[#ccff00] text-xs font-mono">AI & DESIGN</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-2 group-hover:text-[#ccff00] transition">AI in Graphic Design
+                    </h3>
+                    <p class="text-gray-400 text-sm">How I use ChatGPT and Midjourney to accelerate brainstorming
+                        sessions.</p>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="bento-card rounded-2xl p-4 hover-trigger group">
+                    <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-800">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-[#ccff00] text-xs font-mono">SOCIAL MEDIA</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-2 group-hover:text-[#ccff00] transition">The Reel Era</h3>
+                    <p class="text-gray-400 text-sm">Strategies for high-engagement content on Instagram and LinkedIn.
                     </p>
-                    <div class="text-gray-400 space-y-4">
-                        <p>Currently seeking a dynamic role to contribute to user-centered solutions and data-driven
-                            visuals across digital platforms.</p>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-[#ccff00]"></i> Brand
-                                Identity</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-[#ccff00]"></i> UI/UX Design
-                            </li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-[#ccff00]"></i> Shopify Dev
-                            </li>
-                            <li class="flex items-center gap-2"><i class="fas fa-check text-[#ccff00]"></i> AI Prompting
-                            </li>
-                        </ul>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="bento-card rounded-2xl p-4 hover-trigger group">
+                    <div class="h-48 overflow-hidden rounded-xl mb-4 bg-gray-800">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=800"
+                            class="w-full h-full object-cover">
                     </div>
-                </div>
+                    <span class="text-[#ccff00] text-xs font-mono">E-COMMERCE</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-2 group-hover:text-[#ccff00] transition">Shopify Visuals</h3>
+                    <p class="text-gray-400 text-sm">Why custom storefronts convert better than standard templates.</p>
+                </article>
             </div>
         </section>
 
-        <!-- Bento Grid Works -->
-        <section id="work" class="py-24 px-6 bg-black">
-            <div class="container mx-auto">
-                <div class="flex justify-between items-end mb-12">
-                    <h2 class="text-5xl md:text-7xl font-bold tracking-tighter">SELECTED <br> <span
-                            class="text-[#ccff00]">WORKS</span></h2>
-                </div>
-
-                <!-- Bento Grid Layout -->
-                <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 auto-rows-[400px] md:h-[900px]">
-                    <div
-                        class="bento-card md:col-span-2 md:row-span-2 relative group rounded-3xl cursor-pointer min-h-[350px]">
-                        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=2400"
-                            alt="Voltaz Electronics" class="w-full h-full object-cover absolute inset-0">
-                        <div
-                            class="absolute bottom-0 left-0 w-full p-6 md:p-10 bg-gradient-to-t from-black via-black/90 to-transparent">
-                            <h3 class="text-2xl md:text-4xl font-bold text-[#ccff00] mb-2">Voltaz Electronics</h3>
-                            <p class="text-white text-base md:text-lg">Branding, Social Media & Exhibition Design</p>
-                        </div>
-                    </div>
-                    <div
-                        class="bento-card md:col-span-1 md:row-span-1 relative group rounded-3xl cursor-pointer min-h-[300px]">
-                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2000"
-                            alt="BB Daily" class="w-full h-full object-cover absolute inset-0">
-                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
-                            <h3 class="text-2xl font-bold text-[#ccff00]">BB Daily App</h3>
-                            <p class="text-sm text-white">UI/UX & Emailers</p>
-                        </div>
-                    </div>
-                    <div
-                        class="bento-card md:col-span-1 md:row-span-1 relative group rounded-3xl cursor-pointer min-h-[300px]">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000"
-                            alt="Versasoft" class="w-full h-full object-cover absolute inset-0">
-                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
-                            <h3 class="text-2xl font-bold text-[#ccff00]">Versasoft</h3>
-                            <p class="text-sm text-white">Digital Brand Assets</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Timeline -->
-        <section id="experience" class="py-24 px-6 bg-[#080808]">
-            <div class="container mx-auto max-w-4xl">
-                <h2 class="text-4xl md:text-5xl font-bold mb-16 tracking-tighter">WORK <span
-                        class="text-[#ccff00]">HISTORY</span></h2>
-                <div class="relative ml-2 md:ml-0">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-item hover-trigger">
-                        <div class="timeline-dot"></div>
-                        <span class="text-[#ccff00] font-mono text-sm mb-1 block">02/2024 – PRESENT</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white">Graphic Designer & SMM</h3>
-                        <h4 class="text-lg md:text-xl text-gray-400 mb-4">Voltaz Electronics & LED Planet</h4>
-                        <ul class="list-disc list-inside text-gray-500 space-y-2 text-sm md:text-base">
-                            <li>Created branding materials (posters, banners, flyers) for partner brands.</li>
-                            <li>Managed social media campaigns, increasing engagement.</li>
-                            <li>Designed standees and digital signage for international expos.</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-item hover-trigger">
-                        <div class="timeline-dot"></div>
-                        <span class="text-[#ccff00] font-mono text-sm mb-1 block">08/2022 – 02/2024</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white">Graphic Designer</h3>
-                        <h4 class="text-lg md:text-xl text-gray-400 mb-4">BB Daily (Le Collectif)</h4>
-                        <ul class="list-disc list-inside text-gray-500 space-y-2 text-sm md:text-base">
-                            <li>Designed app/website creatives, HTML emailers, and landing pages.</li>
-                            <li>Revamped UI/UX design for better user navigation.</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-item hover-trigger">
-                        <div class="timeline-dot"></div>
-                        <span class="text-[#ccff00] font-mono text-sm mb-1 block">11/2021 – 05/2022</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white">Graphic & Social Media Designer</h3>
-                        <h4 class="text-lg md:text-xl text-gray-400 mb-4">Versasoft Solutions</h4>
-                    </div>
-                    <div class="timeline-item hover-trigger">
-                        <div class="timeline-dot"></div>
-                        <span class="text-[#ccff00] font-mono text-sm mb-1 block">06/2020 – 11/2021</span>
-                        <h3 class="text-xl md:text-2xl font-bold text-white">Customer Support Associate</h3>
-                        <h4 class="text-lg md:text-xl text-gray-400 mb-4">Waybeo Technology Solutions</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education & Skills -->
-        <section id="skills" class="py-24 px-6 bg-black border-t border-gray-900">
-            <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-                <div>
-                    <h3 class="text-3xl font-bold mb-8 text-white">EDUCATION <span class="text-[#ccff00]">&</span> CERTS
-                    </h3>
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-xl font-bold text-white">B.Sc. Electronics</h4>
-                            <p class="text-gray-400">Kerala University | 2017 – 2020</p>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold text-white">Computer Science</h4>
-                            <p class="text-gray-400">L.M.S H.S.S Amaravila | 2015 – 2017</p>
-                        </div>
-                        <div class="pt-6 border-t border-gray-800">
-                            <h4 class="text-[#ccff00] font-mono text-sm mb-4">CERTIFICATIONS</h4>
-                            <ul class="space-y-2 text-gray-400">
-                                <li>• UX Designer – Google Coursera (2022)</li>
-                                <li>• Google Digital Garage (2021)</li>
-                                <li>• Digital Marketing – Avodha (2021)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-3xl font-bold mb-8 text-white">TECHNICAL <span class="text-[#ccff00]">ARSENAL</span>
-                    </h3>
-                    <div class="flex flex-wrap">
-                        <span class="skill-pill">Adobe Photoshop</span>
-                        <span class="skill-pill">Figma</span>
-                        <span class="skill-pill">Adobe Illustrator</span>
-                        <span class="skill-pill">Shopify Development</span>
-                        <span class="skill-pill">UX Research</span>
-                        <span class="skill-pill">HTML / CSS</span>
-                        <span class="skill-pill">AI Prompting</span>
-                        <span class="skill-pill">Meta Business Suite</span>
-                        <span class="skill-pill">Miro</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="py-20 px-6 bg-[#050505] border-t border-gray-900 relative z-20">
-            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <p class="text-[#ccff00] font-mono mb-4">GET IN TOUCH</p>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's create something <br> extraordinary.</h2>
-                    <div class="space-y-2 text-gray-400">
-                        <p class="flex items-center gap-3"><i class="fas fa-phone text-[#ccff00]"></i> +91 9400954703
-                        </p>
-                        <p class="flex items-center gap-3"><i class="fas fa-envelope text-[#ccff00]"></i>
-                            binoy.pys@gmail.com</p>
-                    </div>
-                </div>
-                <div class="flex flex-col items-start md:items-end gap-6">
-                    <div class="flex gap-4">
-                        <a href="https://www.linkedin.com/in/binoyss/" target="_blank"
-                            class="social-btn hover-trigger"><i class="fab fa-linkedin-in text-xl"></i></a>
-                        <a href="https://www.behance.net/binoypy" target="_blank" class="social-btn hover-trigger"><i
-                                class="fab fa-behance text-xl"></i></a>
-                        <a href="https://wa.link/+919400954703" target="_blank" class="social-btn hover-trigger"><i
-                                class="fab fa-whatsapp text-xl"></i></a>
-                    </div>
-                    <p class="text-gray-600 text-sm">© 2025 Binoy S S. All Rights Reserved.</p>
-                </div>
-            </div>
+        <footer class="py-20 px-6 border-t border-gray-900 bg-[#050505] mt-12 text-center text-gray-500">
+            <p>© 2025 Binoy S S.</p>
         </footer>
     </div>
 
