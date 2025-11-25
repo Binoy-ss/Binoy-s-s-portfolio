@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Gallery | Binoy S S</title>
+
+    <!-- Fonts & Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased">
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- 3D Background -->
+    <div id="canvas-container"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-5 border-b border-white/5 bg-black/80 backdrop-blur-md">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter hover-trigger relative z-50">BINOY<span
+                    class="text-[#ccff00]"> S S.</span></a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-8 items-center text-sm font-medium">
+                <a href="index.html#about" class="hover:text-[#ccff00] transition-colors hover-trigger">ABOUT</a>
+                <a href="gallery.html" class="text-[#ccff00] transition-colors hover-trigger">WORK</a>
+                <a href="blog.html" class="hover:text-[#ccff00] transition-colors hover-trigger">DIGITAL UPDATES</a>
+                <a href="index.html#experience"
+                    class="hover:text-[#ccff00] transition-colors hover-trigger">EXPERIENCE</a>
+
+                <a href="assets/resume.pdf" download
+                    class="flex items-center gap-2 border border-gray-600 px-5 py-2 rounded-full hover:bg-white hover:text-black transition hover-trigger">
+                    <i class="fas fa-download"></i> <span>RESUME</span>
+                </a>
+            </div>
+
+            <a href="https://wa.link/+919400954703" target="_blank"
+                class="hidden md:block bg-[#ccff00] text-black px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-bold hover-trigger">
+                Let's Talk
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none relative z-50">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-black flex flex-col justify-center items-center gap-8 text-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-40">
+            <a href="index.html" class="mobile-link hover:text-[#ccff00]">HOME</a>
+            <a href="gallery.html" class="mobile-link text-[#ccff00]">WORK</a>
+            <a href="blog.html" class="mobile-link hover:text-[#ccff00]">DIGITAL UPDATES</a>
+            <a href="assets/resume.pdf" download
+                class="text-sm border border-[#ccff00] text-[#ccff00] px-6 py-2 rounded-full">DOWNLOAD RESUME</a>
+        </div>
+    </nav>
+
+    <div class="content-layer">
+
+        <!-- Header -->
+        <header class="pt-40 pb-12 px-6 text-center">
+            <h1 class="text-6xl md:text-8xl font-bold uppercase tracking-tighter hero-text">
+                SELECTED <br> <span class="text-stroke">WORKS</span>
+            </h1>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mt-12 filter-container">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="branding">BRANDING</button>
+                <button class="filter-btn" data-filter="uiux">UI/UX</button>
+                <button class="filter-btn" data-filter="social">SOCIAL MEDIA</button>
+            </div>
+        </header>
+
+        <!-- Bento Grid Gallery -->
+        <section class="py-12 px-6 pb-32">
+            <div class="container mx-auto">
+                <div class="bento-grid-gallery">
+
+                    <!-- Item 1: Large Branding (Voltaz) -->
+                    <div class="bento-item large branding" data-category="branding">
+                        <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=2400"
+                            alt="Voltaz Branding">
+                        <div class="bento-overlay">
+                            <h3>Voltaz Electronics</h3>
+                            <p>Brand Identity & Exhibition</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Tall UI/UX (BB Daily) -->
+                    <div class="bento-item tall uiux" data-category="uiux">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200"
+                            alt="BB Daily App">
+                        <div class="bento-overlay">
+                            <h3>BB Daily</h3>
+                            <p>Mobile App Redesign</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Wide Social (Versasoft) -->
+                    <div class="bento-item wide social" data-category="social">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000"
+                            alt="Versasoft Social">
+                        <div class="bento-overlay">
+                            <h3>Versasoft</h3>
+                            <p>Social Media Campaign</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Standard Branding -->
+                    <div class="bento-item branding" data-category="branding">
+                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200"
+                            alt="Logo Design">
+                        <div class="bento-overlay">
+                            <h3>Neon Cyber</h3>
+                            <p>Logo Design</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Standard UI/UX -->
+                    <div class="bento-item uiux" data-category="uiux">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200"
+                            alt="Web Dashboard">
+                        <div class="bento-overlay">
+                            <h3>FinTech Dash</h3>
+                            <p>Web Dashboard UI</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Wide Video/Social -->
+                    <div class="bento-item wide social" data-category="social">
+                        <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?q=80&w=2000"
+                            alt="Marketing Video">
+                        <div class="bento-play-btn"><i class="fas fa-play"></i></div>
+                        <div class="bento-overlay">
+                            <h3>Product Teaser</h3>
+                            <p>Motion Graphics</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 7: Tall Branding -->
+                    <div class="bento-item tall branding" data-category="branding">
+                        <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?q=80&w=1200"
+                            alt="Packaging">
+                        <div class="bento-overlay">
+                            <h3>Eco Pack</h3>
+                            <p>Sustainable Packaging</p>
+                        </div>
+                    </div>
+
+                    <!-- *** NEW ITEMS ADDED BELOW *** -->
+
+                    <!-- Item 8: Standard Branding (AI Art) -->
+                    <div class="bento-item branding" data-category="branding">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1200"
+                            alt="AI Generated Design">
+                        <div class="bento-overlay">
+                            <h3>AI Synthesis</h3>
+                            <p>Generative Art & Concept</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 9: Wide UI/UX (Shopify) -->
+                    <div class="bento-item wide uiux" data-category="uiux">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2000"
+                            alt="Shopify Store">
+                        <div class="bento-overlay">
+                            <h3>Luxe Commerce</h3>
+                            <p>Shopify Store Development</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 10: Standard Branding (Typography) -->
+                    <div class="bento-item branding" data-category="branding">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200"
+                            alt="Typography Poster">
+                        <div class="bento-overlay">
+                            <h3>Type Series</h3>
+                            <p>Poster & Print Design</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 px-6 bg-[#050505] border-t border-gray-900 relative z-20">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-[#ccff00] font-mono mb-4">GET IN TOUCH</p>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's create something <br> extraordinary.</h2>
+
+                    <div class="space-y-2 text-gray-400">
+                        <p class="flex items-center gap-3 break-all"><i class="fas fa-phone text-[#ccff00]"></i> +91
+                            9400954703</p>
+                        <p class="flex items-center gap-3 break-all"><i class="fas fa-envelope text-[#ccff00]"></i>
+                            binoy.pys@gmail.com</p>
+                        <p class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-[#ccff00]"></i>
+                            Neyyattinkara, Trivandrum, Kerala, India</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-start md:items-end gap-6">
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/in/binoyss/" target="_blank"
+                            class="social-btn hover-trigger"><i class="fab fa-linkedin-in text-xl"></i></a>
+                        <a href="https://www.behance.net/binoypy" target="_blank" class="social-btn hover-trigger"><i
+                                class="fab fa-behance text-xl"></i></a>
+                        <a href="https://wa.link/+919400954703" target="_blank" class="social-btn hover-trigger"><i
+                                class="fab fa-whatsapp text-xl"></i></a>
+                    </div>
+                    <p class="text-gray-600 text-sm">© 2025 Binoy S S. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-black/95 hidden flex justify-center items-center opacity-0 transition-opacity duration-300">
+        <button id="lightbox-close"
+            class="absolute top-6 right-6 text-white text-4xl hover:text-[#ccff00]">&times;</button>
+        <img id="lightbox-img" src="" alt="Full View"
+            class="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl border border-[#333]">
+        <div id="lightbox-caption" class="absolute bottom-6 left-0 w-full text-center text-gray-400 font-mono"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // --- Gallery Specific Logic (Filters & Lightbox) ---
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.bento-item');
+
+        // Filter Logic
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.getAttribute('data-filter');
+
+                items.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        gsap.to(item, { autoAlpha: 1, scale: 1, duration: 0.4, display: 'block' });
+                    } else {
+                        gsap.to(item, { autoAlpha: 0.1, scale: 0.95, duration: 0.4 });
+                    }
+                });
+            });
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const title = item.querySelector('h3').innerText;
+                const cat = item.querySelector('p').innerText;
+
+                lightboxImg.src = imgSrc;
+                lightboxCaption.innerText = `${title} - ${cat}`;
+
+                lightbox.classList.remove('hidden');
+                setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => lightbox.classList.add('hidden'), 300);
+        };
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    </script>
+</body>
+
+</html>

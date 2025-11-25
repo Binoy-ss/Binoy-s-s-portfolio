@@ -1,0 +1,378 @@
+:root {
+    --neon-green: #ccff00;
+    --black: #050505;
+    --dark-gray: #121212;
+    --glass: rgba(255, 255, 255, 0.03);
+}
+
+body {
+    background-color: var(--black);
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: none;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+/* Prevent scrolling when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* --- 3D Background (Updated for Visibility) --- */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    /* Increased opacity to make it pop */
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.content-layer {
+    position: relative;
+    z-index: 10;
+}
+
+/* --- Custom Cursor --- */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--neon-green);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--neon-green);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+body.hovering .cursor-outline {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(204, 255, 0, 0.1);
+    border-color: transparent;
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+}
+
+/* --- Navigation & Mobile Menu --- */
+nav {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    /* High z-index to stay on top */
+}
+
+/* Hamburger Button */
+#menu-btn {
+    z-index: 101;
+    /* Above the overlay */
+}
+
+/* Mobile Menu Overlay */
+#mobile-menu {
+    z-index: 99;
+    /* Below button, above content */
+    background: rgba(5, 5, 5, 0.98);
+    /* Solid background to hide content */
+}
+
+#mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- HERO IMAGE STYLES --- */
+.hero-image-wrapper {
+    perspective: 1000px;
+}
+
+.animate-spin-slow {
+    animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Bento Grid Styles --- */
+.bento-card {
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-card:hover {
+    border-color: var(--neon-green);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(204, 255, 0, 0.15);
+}
+
+.bento-card img {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: grayscale(100%);
+}
+
+.bento-card:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+/* --- Timeline Styling --- */
+.timeline-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #333;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 3rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+/* --- Social Buttons --- */
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.social-btn:hover {
+    background-color: var(--neon-green);
+    border-color: var(--neon-green);
+    color: black;
+    transform: scale(1.1);
+}
+
+/* --- Skills Tags --- */
+.skill-pill {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    margin: 0 0.5rem 0.5rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-pill:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    background: rgba(204, 255, 0, 0.05);
+}
+
+
+/* --- Gallery  --- */
+
+/* --- Gallery Filter Buttons --- */
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 99px;
+    background: transparent;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--neon-green);
+    color: black;
+    border-color: var(--neon-green);
+    transform: translateY(-2px);
+}
+
+/* --- Main Bento Grid Layout --- */
+.bento-grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /* Mobile default: 1 column */
+    gap: 1.5rem;
+    grid-auto-flow: dense;
+    /* Helps fill gaps */
+}
+
+@media (min-width: 768px) {
+    .bento-grid-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        /* Tablet/Desktop: 4 columns */
+        grid-auto-rows: 250px;
+        /* Fixed row height base */
+    }
+}
+
+/* --- Bento Item Styles --- */
+.bento-item {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #111;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -5px rgba(204, 255, 0, 0.15);
+    border-color: var(--neon-green);
+}
+
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+    filter: grayscale(100%);
+}
+
+.bento-item:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+/* --- Grid Spans (Desktop Only) --- */
+@media (min-width: 768px) {
+
+    /* Large box: 2x2 */
+    .bento-item.large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    /* Tall box: 1x2 */
+    .bento-item.tall {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+
+    /* Wide box: 2x1 */
+    .bento-item.wide {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    /* Standard box: 1x1 (Default) */
+}
+
+/* Mobile Overrides: Force Height */
+@media (max-width: 767px) {
+    .bento-item {
+        min-height: 300px;
+        /* Ensure visibility on mobile */
+    }
+}
+
+/* --- Hover Overlay --- */
+.bento-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.bento-item:hover .bento-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.bento-overlay h3 {
+    color: var(--neon-green);
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.bento-overlay p {
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Play button for videos */
+.bento-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.bento-item:hover .bento-play-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
