@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Gallery | Binoy S S</title>
+    <meta name="description"
+        content="Explore the design portfolio of Binoy S S. Branding, UI/UX, and Social Media campaigns.">
+    <link rel="canonical" href="https://binoy-s-s-portfolio.vercel.app/gallery.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://binoy-s-s-portfolio.vercel.app/gallery.html">
+    <meta property="og:title" content="Work Gallery | Binoy S S">
+    <meta property="og:description"
+        content="Explore the design portfolio of Binoy S S. Branding, UI/UX, and Social Media campaigns.">
+    <meta property="og:image" content="https://binoy-s-s-portfolio.vercel.app/assets/og-image.jpg">
 
     <!-- Fonts & Libraries -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
@@ -64,7 +75,7 @@
             class="fixed inset-0 bg-black flex flex-col justify-center items-center gap-8 text-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-40">
             <a href="index.html" class="mobile-link hover:text-[#ccff00]">HOME</a>
             <a href="gallery.html" class="mobile-link text-[#ccff00]">WORK</a>
-            <a href="blog.html" class="mobile-link hover:text-[#ccff00]">DIGITAL UPDATES</a>
+            <a href="blog/" class="mobile-link hover:text-[#ccff00]">DIGITAL UPDATES</a>
             <a href="assets/resume.pdf" download
                 class="text-sm border border-[#ccff00] text-[#ccff00] px-6 py-2 rounded-full">DOWNLOAD RESUME</a>
         </div>
@@ -84,6 +95,7 @@
                 <button class="filter-btn" data-filter="branding">BRANDING</button>
                 <button class="filter-btn" data-filter="uiux">UI/UX</button>
                 <button class="filter-btn" data-filter="social">SOCIAL MEDIA</button>
+                <button class="filter-btn" data-filter="Power Point">Power Point</button>
             </div>
         </header>
 
@@ -113,22 +125,23 @@
                     </div>
 
                     <!-- Item 3: Wide Social (Versasoft) -->
-                    <div class="bento-item wide social" data-category="social">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000"
-                            alt="Versasoft Social">
+                    <div class="bento-item wide social" data-category="Power Point">
+                        <video src="assets/presentation 2.mp4" autoplay muted loop playsinline></video>
                         <div class="bento-overlay">
-                            <h3>Versasoft</h3>
-                            <p>Social Media Campaign</p>
+                            <a href="https://www.behance.net/binoypy" target="_blank">
+                                <h3>DJI Mavic</h3>
+                            </a>
+                            <p>Presentation Design</p>
                         </div>
                     </div>
-
                     <!-- Item 4: Standard Branding -->
-                    <div class="bento-item branding" data-category="branding">
-                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1200"
-                            alt="Logo Design">
+                    <div class="bento-item branding" data-category="Power Point">
+                        <video src="assets/dron_1.mp4" autoplay muted loop playsinline></video>
                         <div class="bento-overlay">
-                            <h3>Neon Cyber</h3>
-                            <p>Logo Design</p>
+                            <a href="https://www.behance.net/binoypy" target="_blank">
+                                <h3>DJI Mavic</h3>
+                            </a>
+                            <p>Presentation Design</p>
                         </div>
                     </div>
 
@@ -222,7 +235,7 @@
                             class="social-btn hover-trigger"><i class="fab fa-linkedin-in text-xl"></i></a>
                         <a href="https://www.behance.net/binoypy" target="_blank" class="social-btn hover-trigger"><i
                                 class="fab fa-behance text-xl"></i></a>
-                        <a href="https://wa.me/+919400954703" target="_blank" class="social-btn hover-trigger"><i
+                        <a href="https://wa.link/+919400954703" target="_blank" class="social-btn hover-trigger"><i
                                 class="fab fa-whatsapp text-xl"></i></a>
                     </div>
                     <p class="text-gray-600 text-sm">© 2025 Binoy S S. All Rights Reserved.</p>
@@ -237,7 +250,9 @@
         <button id="lightbox-close"
             class="absolute top-6 right-6 text-white text-4xl hover:text-[#ccff00]">&times;</button>
         <img id="lightbox-img" src="" alt="Full View"
-            class="max-h-[90vh] max-w-[90vw] object-contain shadow-2xl border border-[#333]">
+            class="hidden max-h-[90vh] max-w-[90vw] object-contain shadow-2xl border border-[#333]">
+        <video id="lightbox-video" controls
+            class="hidden max-h-[90vh] max-w-[90vw] object-contain shadow-2xl border border-[#333]"></video>
         <div id="lightbox-caption" class="absolute bottom-6 left-0 w-full text-center text-gray-400 font-mono"></div>
     </div>
 
@@ -269,17 +284,30 @@
         // Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxVideo = document.getElementById('lightbox-video');
         const lightboxCaption = document.getElementById('lightbox-caption');
         const lightboxClose = document.getElementById('lightbox-close');
 
         items.forEach(item => {
             item.addEventListener('click', () => {
-                const imgSrc = item.querySelector('img').src;
+                const img = item.querySelector('img');
+                const video = item.querySelector('video');
+
                 const title = item.querySelector('h3').innerText;
                 const cat = item.querySelector('p').innerText;
-
-                lightboxImg.src = imgSrc;
                 lightboxCaption.innerText = `${title} - ${cat}`;
+
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxImg.classList.remove('hidden');
+                    lightboxVideo.classList.add('hidden');
+                    lightboxVideo.pause();
+                } else if (video) {
+                    lightboxVideo.src = video.src;
+                    lightboxVideo.classList.remove('hidden');
+                    lightboxImg.classList.add('hidden');
+                    lightboxVideo.play();
+                }
 
                 lightbox.classList.remove('hidden');
                 setTimeout(() => lightbox.classList.remove('opacity-0'), 10);
@@ -288,15 +316,20 @@
 
         const closeLightbox = () => {
             lightbox.classList.add('opacity-0');
-            setTimeout(() => lightbox.classList.add('hidden'), 300);
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightboxVideo.pause();
+                lightboxVideo.src = ""; // Reset source
+            }, 300);
         };
 
         lightboxClose.addEventListener('click', closeLightbox);
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
+
+
     </script>
 </body>
 
 </html>
-
